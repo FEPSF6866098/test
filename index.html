@@ -1,1 +1,54 @@
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Age vs Salary Scatter Chart</title>
+    <!-- Load Google Charts API -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+      // Load the Google Charts library and the 'scatter' package
+      google.charts.load('current', { packages: ['corechart'] });
+
+      // Set a callback to run when the Google Visualization API is loaded
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback function to draw the chart
+      function drawChart() {
+        // Create the data table
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'Age');
+        data.addColumn('number', 'Salary');
+
+        // Add the data rows
+        data.addRows([
+          [25, 40000],
+          [30, 50000],
+          [35, 60000],
+          [40, 75000],
+          [45, 80000],
+          [50, 90000]
+        ]);
+
+        // Set chart options
+        var options = {
+          title: 'Age vs Salary',
+          hAxis: { title: 'Age' },
+          vAxis: { title: 'Salary' }
+        };
+
+        // Create the scatter chart
+        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+
+        // Draw the chart with the data and options
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>Scatter Chart: Age vs Salary</h1>
+    <!-- Container for the chart -->
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
